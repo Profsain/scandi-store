@@ -1,5 +1,5 @@
 # Scandi-Store
-A React-Redux web application for Scandiweb. The app fetches data from GraphQL server, use Redux for client state management, and users can shop online with cart e-commerce functionality
+A React-Redux web application for Scandiweb test. The app fetches data from GraphQL server, use Redux for client state management, and users can shop online with cart e-commerce functionality
 
 ### Live Demo
 [Scandi-Store:](#)
