@@ -10,38 +10,49 @@ import {
   HttpLink,
   from} from '@apollo/client'
   import { onError } from '@apollo/client/link/error';
+  import { store } from './redux/App';
+  import { Provider } from 'react-redux';
+  import { request, GraphQLClient } from 'graphql-request';
+  import { LOAD_DATA } from './graphQL/Queries';
+
 
   // Error Handling
-  const errorLink = onError(({ graphQLErrors, networkError }) => {
-    if (graphQLErrors) {
-      graphQLErrors.map(({ message, locations, path }) =>
-        console.log(
-          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-        ),
-      );
-    }
-  });
+  // const errorLink = onError(({ graphQLErrors, networkError }) => {
+  //   if (graphQLErrors) {
+  //     graphQLErrors.map(({ message, locations, path }) =>
+  //       console.log(
+  //         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+  //       ),
+  //     );
+  //   }
+  // });
 
-  // Server localhost link system
-  const link = from([
-    errorLink,
-    new HttpLink({ uri: 'http://localhost:4000/graphql' }),
-  ]);
+  // // Server localhost link system
+  // const link = from([
+  //   errorLink,
+  //   new HttpLink({ uri: 'http://localhost:4000/graphql' }),
+  // ]);
 
-  // client system
-  const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    link
+  // // client system
+  // const client = new ApolloClient({
+  //   cache: new InMemoryCache(),
+  //   link
+  // })
+  
+  // data request
+  const client = new GraphQLClient('http://localhost:4000/graphql', {
+    headers: {
+      authorization: 'Bearer my-token',
+    },
   })
+
+  client.request(LOAD_DATA).then(data => console.log(data));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ApolloProvider client={client}>
+  <Provider store={store}>
     <App />
-  </ApolloProvider>
+  </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
