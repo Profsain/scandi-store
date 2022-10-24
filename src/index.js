@@ -3,15 +3,40 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { store } from './redux/App';
-import { Provider } from 'react-redux';
+import { 
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+  from} from '@apollo/client'
+  import { onError } from '@apollo/client/link/error';
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    graphQLErrors.map(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+      ),
+    );
+  }
+});
+
+const link = from([
+  errorLink,
+  new HttpLink({ uri: 'http://localhost:4000/' }),
+]);
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: link
+});
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
+  <ApolloProvider client={client}>
     <App />
-  </Provider>
+  </ApolloProvider>
 );
 
 reportWebVitals();
