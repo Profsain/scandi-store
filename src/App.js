@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import ProductsList from './components/products/ProductsList';
+// import ProductsList from './components/products/ProductsList';
+import ProductDetails from './components/productDetails/ProductDetails';
 import './App.css';
 
 
@@ -12,7 +13,8 @@ class App extends Component {
     return (
       <div className='App'>
         <h1>GraphQL Ecommerce Store</h1>
-        <ProductsList />
+        {/* <ProductsList /> */}
+        <ProductDetails />
       </div>
     );
   }
