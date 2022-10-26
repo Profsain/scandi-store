@@ -27,7 +27,7 @@ export default class NavBar extends Component {
               <option value='RYB'>₽</option>
             </select>
           </div>
-          <FaShoppingCart />
+          <NavLink to='/cart'><FaShoppingCart /></NavLink>
         </div>
       </div>
     )
