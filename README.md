@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Scandi-Store
+A React GraphQL web application for Scandiweb test. The app fetches data from GraphQL server using Apollo client and display store products, users can shop online with cart e-commerce functionality
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Live Demo
+[Scandi-Store:](#)
 
-## Available Scripts
 
-In the project directory, you can run:
+## Built With
+- React
+- Redux
+- GraphQL
+- Apollo Client
+- JavaScript
+- HTML
+- CSS
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
+To get a local copy up and running follow these simple example steps.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Run GraphQL Backend Server
+- Clone the GraphQL endpoint server
+- git clone 
+- cd into cloned folder
+- yarn build
+- yarn start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### To Run Frontend React App
+- Go to the repository page. 
+- Press the "Code" button and copy the link https://github.com/Profsain/scandi-store.git. 
+- Clone it using git command git clone.
+- cd into the cloned folder 
+- Run npm install to install all dependancies 
+- Open folder in your code editor 
+- Run npm start to open the project in localhost
 
-### `npm run build`
+## Authors
+👤 **Husseini Mudi**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- GitHub: [@githubhandle](https://github.com/Profsain)
+- Twitter: [@twitterhandle](https://twitter.com/profsain)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/profsain)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+🤝 Contributing
+Contributions, issues, and feature requests are welcome!
 
-### `npm run eject`
+Feel free to check the issues page.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Show your support
+Give a ⭐️ if you like this project!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Acknowledgments
+Hat tip to anyone whose code was used
+Scandiweb [www.scandiweb.com](https://scandiweb.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+📝 License
+This project is [MIT](./MIT.md) licensed.
