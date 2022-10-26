@@ -19,16 +19,14 @@ export default class ProductDetails extends Component {
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error :(</p>;
-          console.log(data.product)
+         
           return (
             <div className={`Container`}>
               <div className='Grid-container'>
                 <div className='Gallery'>
                   {data.product.gallery.map((img, index) => (
                     <img width='100px' height='100px' key={index} src={img} alt={data.product.name} />
-                  )
-                  )}
-
+                  ) )}
                 </div>
                 <div className='Img-view'>
                   <img width='400px' height='400px' src={data.product.gallery[0]} alt={data.product.name} />
