@@ -10,6 +10,7 @@ export default class ProductsList extends Component {
     super(props);
     this.state = {
       showProductDetails: false,
+      productId: null,
     }
   }
 
@@ -22,7 +23,9 @@ export default class ProductsList extends Component {
   openProductDetails = (id) => {
     console.log('openProductDetails', id)
     this.toggleShowProductDetails()
-    
+    this.setState({
+      productId: id
+    });
   }
   render() {
     return (
@@ -50,7 +53,12 @@ export default class ProductsList extends Component {
             )
           }}
         </Query>
-        {this.state.showProductDetails && <ProductDetails toggle={this.toggleShowProductDetails}/>}
+        {this.state.showProductDetails
+          && <ProductDetails
+            toggle={this.toggleShowProductDetails}
+            productId={this.state.productId}
+          />
+        }
       </>
     )
   }

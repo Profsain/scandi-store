@@ -1,6 +1,4 @@
 .Container {
-  /* visibility: hidden;
-  opacity: 0; */
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -20,8 +18,9 @@
 }
 
 .Grid-container {
+  overflow: scroll;
   display: grid;
-  grid-template-columns: 200px 600px 200px;
+  grid-template-columns: 200px 600px 300px;
   gap: 20px;
   justify-content: center;
   align-items: flex-start;
