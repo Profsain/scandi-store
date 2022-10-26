@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import './ProductDetails.css';
 
 export default class ProductDetails extends Component {
+  togglePage = this.props.toggle;
   render() {
     return (
-      <div className='Container'>
+      <div className={`Container`}>
+        <div className='Grid-container'>
         <div className='Gallery'>
           <img width='100px' height='100px' src='tshirt.jpg' alt='' />
           <img width='100px' height='100px' src='tshirt.jpg' alt='' />
@@ -14,6 +16,7 @@ export default class ProductDetails extends Component {
           <img width='400px' height='400px' src='tshirt.jpg' alt='' />
         </div>
         <div className='Details'>
+          <button onClick={this.togglePage}>Close</button>
           <h3>Product Name</h3>
           <h4>Size</h4>
           <div className='Size'>
@@ -33,6 +36,7 @@ export default class ProductDetails extends Component {
 
           <button>Add to cart</button>
           <p>Beautiful men tshirt for winter outfit. Enjoy yourself</p>
+        </div>
         </div>
       </div>
     )
