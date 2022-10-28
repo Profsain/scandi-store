@@ -5,7 +5,7 @@ import MenCategory from './components/men/MenCategory';
 import WomenCategory from './components/women/WomenCategory';
 import NavBar from './components/navigation/NavBar';
 import ProductDetails from './components/productDetails/ProductDetails';
-import CartModel from './components/cart/CartModel';
+import CartPage from './components/cart/CartPage';
 import './App.css';
 
 
@@ -23,7 +23,7 @@ class App extends Component {
           <Route path='/men' element={<MenCategory />} />
           <Route path='/women' element={<WomenCategory />} />
           <Route path='/product/:id' element={<ProductDetails />} />
-          <Route path='/cart' element={<CartModel />} />
+          <Route path='/cart' element={<CartPage />} />
         </Routes>
       </div>
     );

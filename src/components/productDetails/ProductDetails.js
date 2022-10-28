@@ -4,8 +4,10 @@ import { LOAD_PRODUCT } from '../../graphQL/Queries';
 import './ProductDetails.css';
 
 export default class ProductDetails extends Component {
+
   togglePage = this.props.toggle;
   productId = this.props.productId;
+  
   limitText = (text, limit) => {
     if (text.length > limit) {
       return text.substring(0, limit) + '...';
@@ -19,7 +21,7 @@ export default class ProductDetails extends Component {
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error :(</p>;
-         
+          
           return (
             <div className={`Container`}>
               <div className='Grid-container'>
