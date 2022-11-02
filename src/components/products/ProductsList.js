@@ -4,6 +4,7 @@ import { LOAD_DATA } from '../../graphQL/Queries';
 import ProductCard from './ProductCard';
 import ProductDetails from '../productDetails/ProductDetails';
 import './Products.css';
+import { Navigate } from 'react-router-dom';
 
 export default class ProductsList extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ export default class ProductsList extends Component {
         </Query>
         {this.state.showProductDetails
           && <ProductDetails
-            toggle={this.toggleShowProductDetails}
+            togglePage={this.toggleShowProductDetails}
             productId={this.state.productId}
           />
         }
