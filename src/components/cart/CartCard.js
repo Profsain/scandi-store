@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { incrementQuantity, decrementQuantity } from '../../redux/CartSlicer';
+import { incrementQuantity, decrementQuantity, removeItemFromCart } from '../../redux/CartSlicer';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import './Cart.css';
 
@@ -14,7 +14,7 @@ class CartCard extends Component {
 
   render() {
     const { id, name, price, attribute, quantity, images } = this.props.item;
-    const { incrementQuantity, decrementQuantity } = this.props;
+    const { incrementQuantity, decrementQuantity, removeItem } = this.props;
 
     // change item images
     const handleNextImg = () => {
@@ -37,14 +37,21 @@ class CartCard extends Component {
           <div>
             {attribute.map((attr, index) => (
               <div key={index}>
-              <h4>{attr.name}:</h4>
-              <div>
-                {attr.items.map((item, index) => (
-                  <button key={index} style={{backgroundColor: `${item.value}`}}>{item.value}</button>
-                ))}
+                <h4>{attr.name}:</h4>
+                <div>
+                  {attr.items.map((item, index) => (
+                    <button key={index} style={{ backgroundColor: `${item.value}` }}>{item.value}</button>
+                  ))}
+                </div>
               </div>
-            </div>
             ))}
+
+            <button
+              className='Remove-btn'
+              onClick={() => removeItem(id)}
+            >
+              Remove
+            </button>
           </div>
         </div>
         <div className='Cart-img Cart-row'>
@@ -73,6 +80,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   incrementQuantity: (item) => dispatch(incrementQuantity(item)),
   decrementQuantity: (item) => dispatch(decrementQuantity(item)),
+  removeItem: (item) => dispatch(removeItemFromCart(item)),
 });
 
 
