@@ -7,18 +7,8 @@ import { getTotalAmount } from '../helper';
 class CartPage extends Component {
 
   render() {
-    const cartItems = this.props.cart.cartStore;
-    // // Find total amount of items price
-    // const getTotalAmount = () => {
-    //   let total = 0;
-
-    //   cartItems.map((item) => {
-    //     let itemAmount = item.quantity * item.price[0].amount;
-    //     return total += itemAmount;
-    //   });
-    //   return total
-    // }
-   
+    const cartItems = this.props.reduxStore.cartReducer.cartStore;
+    
     return (
       <div>
         {cartItems.map((item, index) => (
@@ -43,7 +33,7 @@ class CartPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  cart: state
+  reduxStore: state,
 });
 
 export default connect(mapStateToProps)(CartPage);

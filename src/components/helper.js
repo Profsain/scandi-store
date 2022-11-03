@@ -26,4 +26,19 @@ const getItemQuantity = (cartItems) => {
   return quantity
 }
 
-export  {getTotalAmount, getTax, getItemQuantity}
+// Handle currency changes
+const currencyChangesHandler = (pricesData, label) => {
+  let amount = 0;
+  let symbol = '';
+  
+  pricesData.map((price) => {
+    if (price.currency.label === label) {
+      amount = price.amount;
+      symbol = price.currency.symbol;
+    }
+    return null;
+  });
+  return symbol + amount
+} 
+
+export  {getTotalAmount, getTax, getItemQuantity, currencyChangesHandler}

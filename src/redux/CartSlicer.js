@@ -4,6 +4,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     cartStore: [],
+    currency: 'USD',
   },
 
   reducers: {
@@ -34,6 +35,10 @@ const cartSlice = createSlice({
         item.quantity--;
       }
     },
+
+    changeCurrency: (state, action) => {
+      state.currency = action.payload
+    },
   }
 });
 
@@ -42,5 +47,6 @@ export const {
   addItemToCart,
   removeItemFromCart,
   incrementQuantity,
-  decrementQuantity
+  decrementQuantity,
+  changeCurrency
 } = cartSlice.actions; 

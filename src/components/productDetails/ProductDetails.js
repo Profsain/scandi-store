@@ -19,7 +19,6 @@ class ProductDetails extends Component {
 
   render() {
     const { togglePage, productId, addToCart } = this.props;
-
     const handleAddToCart = (item) => {
       addToCart(item);
       togglePage();

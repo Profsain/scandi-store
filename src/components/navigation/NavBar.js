@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { changeCurrency } from '../../redux/CartSlicer';
 import { FaGift, FaShoppingCart } from 'react-icons/fa';
 import './NavBar.css';
 
 
 class NavBar extends Component {
   render() {
-    const cartTotalQuantity = this.props.cart.cartStore.length;
+    const { reduxStore, changeCurrencyValue } = this.props;
+    console.log('Cart Store here', reduxStore.productsReducer)
+    const cartTotalQuantity = reduxStore.cartReducer.cartStore.length;
     
+    // Handle currency change
+    const handleCurrencyChange = (e) => {
+      changeCurrencyValue(e.target.value);
+    }
+
     return (
       <div className='Navbar'>
         <nav>
@@ -22,12 +30,12 @@ class NavBar extends Component {
 
         <div className='Cart'>
           <div>
-            <select name='currency' id='currency' className='Symbol'>
-              <option value='USD'>$</option>
-              <option value='EUR'>£</option>
+            <select name='currency' id='currency' className='Symbol' onChange={handleCurrencyChange}>
+              <option value='USD' >$</option>
+              <option value='GBP'>£</option>
               <option value='AUD'>A$</option>
               <option value='JPY'>¥</option>
-              <option value='RYB'>₽</option>
+              <option value='RUB'>₽</option>
             </select>
           </div>
           <NavLink to='/cart'><FaShoppingCart />{cartTotalQuantity}</NavLink>
@@ -38,7 +46,11 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  cart: state,
+  reduxStore: state,
 });
 
-export default connect(mapStateToProps)(NavBar);
+const mapDispatchToProps = (dispatch) => ({
+  changeCurrencyValue: (currency) => dispatch(changeCurrency(currency))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
