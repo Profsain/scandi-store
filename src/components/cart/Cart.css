@@ -1,0 +1,25 @@
+.Cart-container {
+  width: 80vw;
+  border-bottom: 1px solid #ccc;
+  padding: 18px;
+}
+
+.Cart-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Cart-img {
+  width: 250px;
+}
+
+.Img-control {
+  width: 50px;
+  /* height: 100px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

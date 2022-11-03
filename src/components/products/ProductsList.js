@@ -4,7 +4,6 @@ import { LOAD_DATA } from '../../graphQL/Queries';
 import ProductCard from './ProductCard';
 import ProductDetails from '../productDetails/ProductDetails';
 import './Products.css';
-import { Navigate } from 'react-router-dom';
 
 export default class ProductsList extends Component {
   constructor(props) {
@@ -22,7 +21,6 @@ export default class ProductsList extends Component {
   }
 
   openProductDetails = (id) => {
-    console.log('openProductDetails', id)
     this.toggleShowProductDetails()
     this.setState({
       productId: id
@@ -35,6 +33,7 @@ export default class ProductsList extends Component {
           {({ loading, error, data }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error :(</p>;
+            
             return (
               <div className='Products-grid'>
                 {

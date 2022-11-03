@@ -25,3 +25,13 @@
   width: 100%;
   height: 200px;
 }
+
+.Product-card:hover .Product-img {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+}
+
+.Product-card:hover {
+  cursor: pointer;
+}
+

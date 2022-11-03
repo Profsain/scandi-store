@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { FaGift, FaShoppingCart } from 'react-icons/fa';
 import './NavBar.css';
 
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   render() {
+    const cartTotalQuantity = this.props.cart.cartStore.length;
+    
     return (
       <div className='Navbar'>
         <nav>
@@ -27,9 +30,15 @@ export default class NavBar extends Component {
               <option value='RYB'>₽</option>
             </select>
           </div>
-          <NavLink to='/cart'><FaShoppingCart /></NavLink>
+          <NavLink to='/cart'><FaShoppingCart />{cartTotalQuantity}</NavLink>
         </div>
       </div>
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  cart: state,
+});
+
+export default connect(mapStateToProps)(NavBar);
