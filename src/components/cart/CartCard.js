@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { incrementQuantity, decrementQuantity, removeItemFromCart } from '../../redux/CartSlicer';
+import { currencyChangesHandler } from '../helper';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import './Cart.css';
 
@@ -14,8 +15,8 @@ class CartCard extends Component {
 
   render() {
     const { id, name, price, attribute, quantity, images } = this.props.item;
-    const { incrementQuantity, decrementQuantity, removeItem } = this.props;
-
+    const { incrementQuantity, decrementQuantity, removeItem,  cart } = this.props;
+   
     // change item images
     const handleNextImg = () => {
       if (this.state.imgIndex < images.length - 1) {
@@ -29,19 +30,32 @@ class CartCard extends Component {
       }
     }
 
+    const currencyLabel = cart.cartReducer.currency;
+
     return (
       <div className='Cart-container Cart-row'>
         <div className='Details'>
           <p>{name}</p>
-          <h4>{price[0].currency.symbol}{price[0].amount}</h4>
+         
+          <h4>{currencyChangesHandler(price, currencyLabel)}</h4>
           <div>
             {attribute.map((attr, index) => (
               <div key={index}>
                 <h4>{attr.name}:</h4>
                 <div>
-                  {attr.items.map((item, index) => (
-                    <button key={index} style={{ backgroundColor: `${item.value}` }}>{item.value}</button>
-                  ))}
+                  {attr.items.map((item, index) => {
+                    if (attr.name === 'Color') {
+                      return (
+                        <button key={index} style={{ backgroundColor: `${item.value}`, height: '20px', width: '40px'}}></button>
+                      )
+                    } else {
+                      return (
+                        <button key={index}>{item.value}</button>
+                      )
+                    }
+                  }
+                    
+                  )}
                 </div>
               </div>
             ))}

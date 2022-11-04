@@ -5,6 +5,7 @@ import { Query } from "@apollo/client/react/components";
 import { LOAD_DATA } from '../../graphQL/Queries';
 import ProductCard from './ProductCard';
 import ProductDetails from '../productDetails/ProductDetails';
+import { currencyChangesHandler } from '../helper';
 import './Products.css';
 
 class ProductsList extends Component {
@@ -31,19 +32,19 @@ class ProductsList extends Component {
   }
 
   // Handle currency changes
-  currencyChangesHandler = (pricesData, label) => {
-    let amount = 0;
-    let symbol = '';
+  // currencyChangesHandler = (pricesData, label) => {
+  //   let amount = 0;
+  //   let symbol = '';
     
-    pricesData.map((price) => {
-      if (price.currency.label === label) {
-        amount = price.amount;
-        symbol = price.currency.symbol;
-      }
-      return null;
-    });
-    return symbol + amount
-  } 
+  //   pricesData.map((price) => {
+  //     if (price.currency.label === label) {
+  //       amount = price.amount;
+  //       symbol = price.currency.symbol;
+  //     }
+  //     return null;
+  //   });
+  //   return symbol + amount
+  // } 
 
   render() {
     const { updateProductStore, productsStore } = this.props;
@@ -69,7 +70,7 @@ class ProductsList extends Component {
                         key={id}
                         name={name}
                         img={gallery[0]}
-                        productCost={this.currencyChangesHandler(prices, label)}
+                        productCost={currencyChangesHandler(prices, label)}
                       />
                     </div>
                   ))

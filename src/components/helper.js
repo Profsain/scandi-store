@@ -1,19 +1,28 @@
 // Find total amount of items price
-const getTotalAmount = (cartItems) => {
+const getTotalAmount = (cartItems, currencyLabel) => {
   let total = 0;
+  let symbol = '';
+  console.log('the cart item are', cartItems)
 
   cartItems.map((item) => {
-    let itemAmount = item.quantity * item.price[0].amount;
-    return total += itemAmount;
+    const { price, quantity } = item;
+    const amount = currencyChangesHandler(price, currencyLabel);
+    const amountValue = amount.slice(1);
+    symbol = amount.slice(0, 1);
+    return total += amountValue * quantity
   });
-  return total.toFixed(2)
+   
+  return symbol + total.toFixed(2)
 }
 
 // find 21% tax
-const getTax = (taxRate, cartItems) => {
-  const total = getTotalAmount(cartItems);
-  const taxValue = (taxRate/100) * total;
-  return taxValue.toFixed(2)
+const getTax = (taxRate, cartItems, currencyLabel) => {
+  const totalAmount = getTotalAmount(cartItems, currencyLabel);
+  const totalAmountValue = totalAmount.slice(1);
+  const symbol = totalAmount.slice(0, 1);
+  const tax = totalAmountValue * taxRate / 100;
+  
+  return symbol + tax.toFixed(2)
 
 }
 

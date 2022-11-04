@@ -11,8 +11,6 @@ const productsSlice = createSlice({
     
     updateProducts(state, action) {
       state.products = action.payload;
-      state.loading = false;
-      state.error = null;
     },
   },
 });

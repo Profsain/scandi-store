@@ -9,7 +9,6 @@ import './NavBar.css';
 class NavBar extends Component {
   render() {
     const { reduxStore, changeCurrencyValue } = this.props;
-    console.log('Cart Store here', reduxStore.productsReducer)
     const cartTotalQuantity = reduxStore.cartReducer.cartStore.length;
     
     // Handle currency change
@@ -33,7 +32,7 @@ class NavBar extends Component {
             <select name='currency' id='currency' className='Symbol' onChange={handleCurrencyChange}>
               <option value='USD' >$</option>
               <option value='GBP'>£</option>
-              <option value='AUD'>A$</option>
+              <option value='AUD'>A</option>
               <option value='JPY'>¥</option>
               <option value='RUB'>₽</option>
             </select>

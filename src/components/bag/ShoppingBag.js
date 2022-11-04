@@ -5,7 +5,8 @@ import { getTotalAmount, getTax, getItemQuantity } from '../helper';
 
 class ShoppingBag extends Component {
   render() {
-    const cartItems = this.props.cart.cartStore;
+    const { cartStore, currency } = this.props.cart.cartReducer;
+    const cartItems = this.props.cart.cartReducer.cartStore;
     return (
       <div>
         <h2>CART</h2>
@@ -17,9 +18,9 @@ class ShoppingBag extends Component {
           />
         ))}
         <div>
-          <p>Tax21%: <span>${getTax(21, cartItems)}</span></p>
-          <p>Quantity: <span>{getItemQuantity(cartItems)}</span></p>
-          <p>Total: <span>${getTotalAmount(cartItems)}</span></p>
+          <p>Tax21%: <span>{getTax(21, cartStore, currency)}</span></p>
+          <p>Quantity: <span>{getItemQuantity(cartStore)}</span></p>
+          <p>Total: <span>{getTotalAmount(cartStore, currency)}</span></p>
           <button>Order</button>
         </div>
       </div>
