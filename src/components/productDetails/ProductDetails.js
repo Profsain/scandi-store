@@ -6,7 +6,7 @@ import { LOAD_PRODUCT } from '../../graphQL/Queries';
 import NavBar from '../navigation/NavBar';
 import { currencyChangesHandler } from '../helper';
 import './ProductDetails.css';
-
+import '../../App.css';
 
 
 class ProductDetails extends Component {
@@ -47,16 +47,16 @@ class ProductDetails extends Component {
               <div className='Grid-container'>
                 <div className='Gallery'>
                   {data.product.gallery.map((img, index) => (
-                    <img width='100px' height='100px' key={index} src={img} alt={data.product.name} />
+                    <img key={index} src={img} alt={data.product.name} />
                   ))}
                 </div>
                 <div className='Img-view'>
-                  <img width='400px' height='400px' src={data.product.gallery[0]} alt={data.product.name} />
+                  <img src={data.product.gallery[0]} alt={data.product.name} />
                 </div>
 
                 <div className='Details'>
-                  <button onClick={togglePage}>Close</button>
-                  <h3>{data.product.name}</h3>
+                  <button className='Close' onClick={togglePage}>Close</button>
+                  <p className='Product-name'>{data.product.name}</p>
 
                   <div className='Attributes'>
                     {data.product.attributes.map((attr, index) => (
@@ -80,8 +80,8 @@ class ProductDetails extends Component {
                   </div>
 
                   <h4>Price:</h4>
-                  <p>{currencyChangesHandler(data.product.prices, currencyLabel)}</p>
-                  <button onClick={() => handleAddToCart(item)}>Add to cart</button>
+                  <p className='Product-price'>{currencyChangesHandler(data.product.prices, currencyLabel)}</p>
+                  <button className='Add-to-cart' onClick={() => handleAddToCart(item)}>Add to cart</button>
                   <div dangerouslySetInnerHTML={{ __html: this.limitText(data.product.description, 200) }}></div>
                 </div>
               </div>
