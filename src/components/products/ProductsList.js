@@ -31,21 +31,6 @@ class ProductsList extends Component {
     });
   }
 
-  // Handle currency changes
-  // currencyChangesHandler = (pricesData, label) => {
-  //   let amount = 0;
-  //   let symbol = '';
-    
-  //   pricesData.map((price) => {
-  //     if (price.currency.label === label) {
-  //       amount = price.amount;
-  //       symbol = price.currency.symbol;
-  //     }
-  //     return null;
-  //   });
-  //   return symbol + amount
-  // } 
-
   render() {
     const { updateProductStore, productsStore } = this.props;
     const productsData = productsStore.productsReducer.products;
@@ -60,16 +45,17 @@ class ProductsList extends Component {
 
             // update redux product store after fetching data
             updateProductStore(data);
-          
+            console.log(productsData);
             return (
               <div className='Products-grid'>
                 {
-                  productsData && productsData.categories[0].products.map(({ id, name, gallery, prices }) => (
+                  productsData && productsData.categories[0].products.map(({ id, name, gallery, prices, inStock }) => (
                     <div key={id} onClick={() => this.openProductDetails(id)}>
                       <ProductCard
                         key={id}
                         name={name}
                         img={gallery[0]}
+                        inStock={inStock}
                         productCost={currencyChangesHandler(prices, label)}
                       />
                     </div>

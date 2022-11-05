@@ -4,7 +4,6 @@
   gap: 3rem;
   align-items: center;
   justify-items: center;
-  color: blue;
 }
 
 .Product-card {
@@ -15,7 +14,7 @@
   box-shadow: 0px 2px 8px 0px rgba(99,99,99,0.75);
   padding: 15px;
   width: 300px;
-  height: 300px;
+  height: 350px;
 }
 
 .Product-card:hover {
@@ -26,7 +25,7 @@
   height: 200px;
 }
 
-.Product-card:hover .Product-img {
+.Product-card:hover git , .Product-cart:hover {
   transform: scale(1.1);
   transition: transform 0.5s;
 }
@@ -35,3 +34,37 @@
   cursor: pointer;
 }
 
+.Product-price {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.Product-stock {
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+  top: -100px;
+  left: 110px;
+  color: #a3a4ad;
+}
+
+.Price-cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 290px;
+}
+
+.Product-cart {
+  background-color: #5ece7b;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  cursor: pointer;
+} 
