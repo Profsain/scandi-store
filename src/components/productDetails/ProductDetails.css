@@ -36,3 +36,16 @@
   align-items: center;
   justify-content: center;
 }
+
+.Gallery img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid lightgray;
+  padding: 6px 0;
+}
+
+.Img-view img {
+  height: 400px;
+  width: 400px;
+}

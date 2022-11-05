@@ -1,7 +1,8 @@
 .Cart-container {
   width: 80vw;
+  height: 300px;
   border-bottom: 1px solid #ccc;
-  padding: 18px;
+  padding: 28px;
 }
 
 .Cart-row {
@@ -17,9 +18,90 @@
 
 .Img-control {
   width: 50px;
-  /* height: 100px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.Img-control img {
+  width: 200px;
+  height: 200px;
+}
+
+p span {
+  font-weight: 700;
+  margin-left: 28px;
+  font-size: 1.2rem;
+}
+
+.View-bag {
+  background-color: #fff;
+  color: #5ece7b;
+  border: 1px solid #5ece7b;
+  font-size: 1.2rem;
+  padding: 6px 34px;
+  margin: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.View-bag:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+  color: #fff;
+  background-color: #5ece7b;
+}
+
+.View-bag a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.Cart-qty {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 170px;
+}
+
+.Cart-qty button {
+  border: 1px solid #ccc;
+  background: none;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.Cart-qty button:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+  background-color: #000;
+  opacity: 0.5;
+  color: #fff;
+  border: none;
+}
+
+
+.Prev-next {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 70px;
+}
+
+.Prev-next button {
+  border: 1px solid #ccc;
+  background: #000;
+  color: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 2px 8px;
+}
+
+.Prev-next button:hover {
+  opacity: 1;
 }

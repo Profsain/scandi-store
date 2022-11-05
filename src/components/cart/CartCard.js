@@ -4,6 +4,7 @@ import { incrementQuantity, decrementQuantity, removeItemFromCart } from '../../
 import { currencyChangesHandler } from '../helper';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import './Cart.css';
+import '../../App.css';
 
 class CartCard extends Component {
   constructor(props) {
@@ -35,10 +36,10 @@ class CartCard extends Component {
     return (
       <div className='Cart-container Cart-row'>
         <div className='Details'>
-          <p>{name}</p>
+          <p className='Product-name'>{name}</p>
          
-          <h4>{currencyChangesHandler(price, currencyLabel)}</h4>
-          <div>
+          <p className='Product-price'>{currencyChangesHandler(price, currencyLabel)}</p>
+          <div className='Attributes'>
             {attribute.map((attr, index) => (
               <div key={index}>
                 <h4>{attr.name}:</h4>
@@ -59,24 +60,25 @@ class CartCard extends Component {
                 </div>
               </div>
             ))}
-
-            <button
-              className='Remove-btn'
+          </div>
+          <button
+              className='Close'
               onClick={() => removeItem(id)}
             >
               Remove
-            </button>
-          </div>
+          </button>
         </div>
+
         <div className='Cart-img Cart-row'>
           <div className='Cart-qty'>
             <button onClick={() => incrementQuantity(id)}>+</button>
             <p>{quantity}</p>
             <button onClick={() => decrementQuantity(id)}>-</button>
           </div>
+
           <div className='Img-control'>
-            <img height="200px" src={images[this.state.imgIndex]} alt="gallery" />
-            <div className='Cart-row'>
+            <img src={images[this.state.imgIndex]} alt="gallery" />
+            <div className='Prev-next'>
               <button onClick={handlePrevImg}><FaAngleLeft /></button>
               <button onClick={handleNextImg}><FaAngleRight /></button>
             </div>

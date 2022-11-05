@@ -4,3 +4,53 @@
   justify-content: center;
   align-items: center;
 }
+
+
+/* shared css styles */
+.Attributes button {
+  background: none;
+  margin-right: 6px;
+  border: 1px solid lightgray;
+  padding: 4px 12px;
+}
+
+.Add-to-cart {
+  background-color: #5ece7b;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  padding: 6px 34px;
+  margin: 18px 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Add-to-cart:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+  color: #5ece7b;
+  background-color: #fff;
+  border: 1px solid #5ece7b;
+}
+
+.Close {
+  background-color: rgb(255, 70, 70);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.Product-name {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+
+.Product-price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}

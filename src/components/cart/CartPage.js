@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CartCard from './CartCard';
-import { getTotalAmount } from '../helper';
+import './Cart.css';
+import '../../App.css';
 
 class CartPage extends Component {
 
@@ -23,8 +24,8 @@ class CartPage extends Component {
         <div>
           {/* <p>Total ${getTotalAmount(cartItems)}</p> */}
           <div>
-            <button><Link to='/bag'>View Bag</Link></button>
-            <button>Checkout</button>
+            <button className='View-bag'><Link to='/bag'>View Bag</Link></button>
+            <button className='Add-to-cart'>Checkout</button>
           </div>
         </div>
       </div>
