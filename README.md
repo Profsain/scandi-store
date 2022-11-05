@@ -1,5 +1,5 @@
 # Scandi-Store
-A React GraphQL web application for Scandiweb test. The app fetches data from GraphQL server using Apollo client and display store products, users can shop online with cart e-commerce functionality
+A React GraphQL web application for Scandiweb test. The app fetches data from GraphQL server using Apollo client and display store products, and users can shop online with cart e-commerce functionality
 
 ### Live Demo
 [Scandi-Store:](#)

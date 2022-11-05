@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux/Store';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { 
+import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   HttpLink,
-  from} from '@apollo/client'
-  import { onError } from '@apollo/client/link/error';
+  from
+} from '@apollo/client'
+import { onError } from '@apollo/client/link/error';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -32,14 +35,19 @@ const client = new ApolloClient({
   link: link
 });
 
+console.log('Apollo Cache', client.cache)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ApolloProvider client={client}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ApolloProvider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ApolloProvider>
+    </Provider>
+  </React.StrictMode>
 );
 
 reportWebVitals();

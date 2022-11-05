@@ -6,6 +6,7 @@ import WomenCategory from './components/women/WomenCategory';
 import NavBar from './components/navigation/NavBar';
 import ProductDetails from './components/productDetails/ProductDetails';
 import CartPage from './components/cart/CartPage';
+import ShoppingBag from './components/bag/ShoppingBag';
 import './App.css';
 
 
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path='/women' element={<WomenCategory />} />
           <Route path='/product/:id' element={<ProductDetails />} />
           <Route path='/cart' element={<CartPage />} />
+          <Route path='/bag' element={<ShoppingBag />} />
         </Routes>
       </div>
     );
