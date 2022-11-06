@@ -20,8 +20,8 @@ class NavBar extends Component {
       <div className='Navbar'>
         <nav>
         <NavLink to='/'>Store</NavLink>
-        <NavLink to='/men'>Men</NavLink>
-        <NavLink to='/women'>Women</NavLink>
+        <NavLink to='/cloth'>Cloth</NavLink>
+        <NavLink to='/tech'>Tech</NavLink>
         </nav>
         <div className='Brand'>
           <FaGift />

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ProductsList from './components/products/ProductsList';
-import MenCategory from './components/men/MenCategory';
-import WomenCategory from './components/women/WomenCategory';
+import ClothCategory from './components/cloth/ClothCategory';
+import TechCategory from './components/tech/TechCategory';
 import NavBar from './components/navigation/NavBar';
 import ProductDetails from './components/productDetails/ProductDetails';
 import CartPage from './components/cart/CartPage';
@@ -21,8 +21,8 @@ class App extends Component {
         <NavBar />
         <Routes>
           <Route path='/' element={<ProductsList />} />
-          <Route path='/men' element={<MenCategory />} />
-          <Route path='/women' element={<WomenCategory />} />
+          <Route path='/cloth' element={<ClothCategory />} />
+          <Route path='/tech' element={<TechCategory />} />
           <Route path='/product/:id' element={<ProductDetails />} />
           <Route path='/cart' element={<CartPage />} />
           <Route path='/bag' element={<ShoppingBag />} />

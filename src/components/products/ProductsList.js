@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateProducts } from '../../redux/ProductsSlice';
+import { updateProducts, toggleShowProductDetails, setProductId } from '../../redux/ProductsSlice';
 import { Query } from "@apollo/client/react/components";
 import { LOAD_DATA } from '../../graphQL/Queries';
 import ProductCard from './ProductCard';
@@ -9,33 +9,18 @@ import { currencyChangesHandler } from '../helper';
 import './Products.css';
 
 class ProductsList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showProductDetails: false,
-      productId: null,
-    }
-  }
-
-  // toggle to open productDetails page
-  toggleShowProductDetails = () => {
-    this.setState({
-      showProductDetails: !this.state.showProductDetails
-    })
-  }
 
   openProductDetails = (id) => {
-    this.toggleShowProductDetails()
-    this.setState({
-      productId: id
-    });
+    const { toggleShowProductDetails, setProductId } = this.props;
+    toggleShowProductDetails();
+    setProductId(id);
   }
 
   render() {
-    const { updateProductStore, productsStore } = this.props;
-    const productsData = productsStore.productsReducer.products;
+    const { updateProductStore, productsStore, toggleShowProductDetails } = this.props;
+    const { products, showProductDetails, productId } = productsStore.productsReducer;
     const label = productsStore.cartReducer.currency;
-
+    console.log(products);
     return (
       <>
         <Query query={LOAD_DATA}>
@@ -45,11 +30,11 @@ class ProductsList extends Component {
 
             // update redux product store after fetching data
             updateProductStore(data);
-            console.log(productsData);
+            
             return (
               <div className='Products-grid'>
                 {
-                  productsData && productsData.categories[0].products.map(({ id, name, gallery, prices, inStock }) => (
+                  products && products.categories[0].products.map(({ id, name, gallery, prices, inStock }) => (
                     <div key={id} onClick={() => this.openProductDetails(id)}>
                       <ProductCard
                         key={id}
@@ -65,10 +50,10 @@ class ProductsList extends Component {
             )
           }}
         </Query>
-        {this.state.showProductDetails
+        {showProductDetails
           && <ProductDetails
-            togglePage={this.toggleShowProductDetails}
-            productId={this.state.productId}
+            togglePage={toggleShowProductDetails}
+            productId={productId}
           />
         }
       </>
@@ -81,7 +66,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateProductStore: (data) => dispatch(updateProducts(data))
+  updateProductStore: (data) => dispatch(updateProducts(data)),
+  toggleShowProductDetails: () => dispatch(toggleShowProductDetails()),
+  setProductId: (id) => dispatch(setProductId(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);
