@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addItemToCart } from '../../redux/CartSlicer';
+import { addItemToCart, addSelectedAttributes } from '../../redux/CartSlicer';
 import { Query } from "@apollo/client/react/components";
 import { LOAD_PRODUCT } from '../../graphQL/Queries';
 import NavBar from '../navigation/NavBar';
@@ -10,21 +10,33 @@ import '../../App.css';
 
 
 class ProductDetails extends Component {
-
-  limitText = (text, limit) => {
-    if (text.length > limit) {
-      return text.substring(0, limit) + '...';
-    }
-    return text;
-  }
-
+  
   render() {
     const { togglePage, productId, addToCart, productsStore } = this.props;
+
+    const  limitText = (text, limit) => {
+      if (text.length > limit) {
+        return text.substring(0, limit) + '...';
+      }
+      return text;
+    }
+    
     const handleAddToCart = (item) => {
       addToCart(item);
       togglePage();
     }
     const currencyLabel = productsStore.cartReducer.currency;
+
+    // handle attributes selection
+    const selectAttribute = (e) => {
+      const selectedAttributes = document.querySelectorAll('.Selected-attribute');
+      selectedAttributes.forEach((attribute) => {
+        attribute.classList.remove('Selected-attribute');
+      });
+      e.target.classList.add('Selected-attribute');
+      const selectedAttribute = e.target.innerText;	
+      addSelectedAttributes(selectedAttribute);
+    }
 
     return (
       <Query query={LOAD_PRODUCT} variables={{ id: productId }}>
@@ -60,17 +72,18 @@ class ProductDetails extends Component {
 
                   <div className='Attributes'>
                     {data.product.attributes.map((attr, index) => (
+                   
                       <div key={index}>
                         <h4>{attr.name}:</h4>
                         <div>
                           {attr.items.map((item, index) => {
                             if (attr.name === 'Color') {
                               return (
-                                <button key={index} style={{ backgroundColor: `${item.value}`, height: '20px', width: '40px' }}></button>
+                                <button id={item.value} onClick={selectAttribute} key={index} style={{ backgroundColor: `${item.value}`, height: '20px', width: '40px' }}></button>
                               )
                             } else {
                               return (
-                                <button key={index}>{item.value}</button>
+                                <button id={item.value} onClick={selectAttribute} key={index}>{item.value}</button>
                               )
                             }
                           })}
@@ -82,7 +95,7 @@ class ProductDetails extends Component {
                   <h4>Price:</h4>
                   <p className='Product-price'>{currencyChangesHandler(data.product.prices, currencyLabel)}</p>
                   <button className='Add-to-cart' onClick={() => handleAddToCart(item)}>Add to cart</button>
-                  <div dangerouslySetInnerHTML={{ __html: this.limitText(data.product.description, 200) }}></div>
+                  <div dangerouslySetInnerHTML={{ __html: limitText(data.product.description, 200) }}></div>
                 </div>
               </div>
             </div>
@@ -96,7 +109,8 @@ class ProductDetails extends Component {
 
 const mapDispatchToProps = (disptach) => {
   return {
-    addToCart: (item) => disptach(addItemToCart(item))
+    addToCart: (item) => disptach(addItemToCart(item)),
+    addSelectedAttributes: (item) => disptach(addSelectedAttributes(item)),
   }
 }
 

@@ -17,7 +17,9 @@ class CartCard extends Component {
   render() {
     const { id, name, price, attribute, quantity, images } = this.props.item;
     const { incrementQuantity, decrementQuantity, removeItem,  cart } = this.props;
-   
+    const { selectedAttributes } = cart.cartReducer.selectedAttributes;
+    
+    console.log('cart', cart.cartReducer.selectedAttributes);
     // change item images
     const handleNextImg = () => {
       if (this.state.imgIndex < images.length - 1) {

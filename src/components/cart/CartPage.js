@@ -13,7 +13,7 @@ class CartPage extends Component {
     return (
       <div>
         {cartItems.map((item, index) => (
-          <div>
+          <div key={index}>
             <CartCard
               item={item}
               key={index}

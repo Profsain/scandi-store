@@ -49,3 +49,13 @@
   height: 400px;
   width: 400px;
 }
+
+.Selected-attribute {
+  border: 1px solid #000 !important;
+  box-shadow: 0 0 0 2px #000 !important;
+  
+}
+
+.Selected-color {
+  border: 1px solid #000;
+}

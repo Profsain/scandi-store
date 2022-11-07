@@ -10,17 +10,17 @@ import './Products.css';
 
 class ProductsList extends Component {
 
-  openProductDetails = (id) => {
-    const { toggleShowProductDetails, setProductId } = this.props;
-    toggleShowProductDetails();
-    setProductId(id);
-  }
-
   render() {
-    const { updateProductStore, productsStore, toggleShowProductDetails } = this.props;
+    const { updateProductStore, productsStore, toggleShowProductDetails, setProductId } = this.props;
     const { products, showProductDetails, productId } = productsStore.productsReducer;
     const label = productsStore.cartReducer.currency;
-    console.log(products);
+
+    // open product details page
+    const openProductDetails = (id) => {
+      toggleShowProductDetails();
+      setProductId(id);
+    }
+
     return (
       <>
         <Query query={LOAD_DATA}>
@@ -30,12 +30,12 @@ class ProductsList extends Component {
 
             // update redux product store after fetching data
             updateProductStore(data);
-            
+
             return (
               <div className='Products-grid'>
                 {
                   products && products.categories[0].products.map(({ id, name, gallery, prices, inStock }) => (
-                    <div key={id} onClick={() => this.openProductDetails(id)}>
+                    <div key={id} onClick={() => openProductDetails(id)}>
                       <ProductCard
                         key={id}
                         name={name}

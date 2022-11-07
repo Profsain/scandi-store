@@ -4,6 +4,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     cartStore: [],
+    selectedAttributes: [],
     currency: 'USD',
   },
 
@@ -39,6 +40,15 @@ const cartSlice = createSlice({
     changeCurrency: (state, action) => {
       state.currency = action.payload
     },
+
+    addSelectedAttributes: (state, action) => {
+      const itemInCart = state.selectedAttributes.find((item) => item.id === action.payload.id);
+      if (itemInCart) {
+        itemInCart.attributes = action.payload.attributes;
+      } else {
+        state.selectedAttributes.push(action.payload);
+      }
+    },
   }
 });
 
@@ -48,5 +58,6 @@ export const {
   removeItemFromCart,
   incrementQuantity,
   decrementQuantity,
-  changeCurrency
+  changeCurrency,
+  addSelectedAttributes,
 } = cartSlice.actions; 
