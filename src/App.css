@@ -54,3 +54,9 @@
   font-weight: 600;
   margin-bottom: 14px;
 }
+
+.Selected-attribute {
+  border: 1px solid #000 !important;
+  box-shadow: 0 0 0 2px #000 !important;
+  
+}

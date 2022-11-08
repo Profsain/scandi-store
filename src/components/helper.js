@@ -47,6 +47,11 @@ const currencyChangesHandler = (pricesData, label) => {
     return null;
   });
   return symbol + amount
-} 
+}
 
-export  {getTotalAmount, getTax, getItemQuantity, currencyChangesHandler}
+export  {
+  getTotalAmount, 
+  getTax, 
+  getItemQuantity,
+  currencyChangesHandler, 
+}

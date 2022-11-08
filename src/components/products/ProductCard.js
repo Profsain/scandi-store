@@ -16,10 +16,10 @@ export default class ProductCard extends Component {
           <p>{name}</p>
           <div className='Price-cart'>
             <p className='Product-price'>{productCost}</p>
+
             <button className='Product-cart'>
               <BsCart />
             </button>
-            
           </div>
         </div>
       </div>

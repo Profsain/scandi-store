@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addItemToCart, addSelectedAttributes } from '../../redux/CartSlicer';
+import { addItemToCart, addSelectedAttributes, clearSelectedAttributes } from '../../redux/CartSlicer';
 import { Query } from "@apollo/client/react/components";
 import { LOAD_PRODUCT } from '../../graphQL/Queries';
 import NavBar from '../navigation/NavBar';
@@ -12,8 +12,9 @@ import '../../App.css';
 class ProductDetails extends Component {
   
   render() {
-    const { togglePage, productId, addToCart, productsStore } = this.props;
-
+    const { togglePage, productId, addToCart, addAttributes, clearAttributes, productsStore } = this.props;
+    const attStore = productsStore.cartReducer.selectedAttributes
+    
     const  limitText = (text, limit) => {
       if (text.length > limit) {
         return text.substring(0, limit) + '...';
@@ -24,7 +25,9 @@ class ProductDetails extends Component {
     const handleAddToCart = (item) => {
       addToCart(item);
       togglePage();
+      clearAttributes();
     }
+
     const currencyLabel = productsStore.cartReducer.currency;
 
     // handle attributes selection
@@ -33,9 +36,10 @@ class ProductDetails extends Component {
       selectedAttributes.forEach((attribute) => {
         attribute.classList.remove('Selected-attribute');
       });
+      const { name, value } = e.target;
+      addAttributes({ name, value });
       e.target.classList.add('Selected-attribute');
-      const selectedAttribute = e.target.innerText;	
-      addSelectedAttributes(selectedAttribute);
+      
     }
 
     return (
@@ -50,7 +54,8 @@ class ProductDetails extends Component {
             name: data.product.name,
             images: data.product.gallery,
             price: data.product.prices,
-            attribute: data.product.attributes,
+            attribute: attStore,	
+            // selectedAttrValue: attStore,
           }
 
           return (
@@ -79,11 +84,25 @@ class ProductDetails extends Component {
                           {attr.items.map((item, index) => {
                             if (attr.name === 'Color') {
                               return (
-                                <button id={item.value} onClick={selectAttribute} key={index} style={{ backgroundColor: `${item.value}`, height: '20px', width: '40px' }}></button>
+                                <button
+                                  name={attr.name}
+                                  value={item.value}
+                                  onClick={selectAttribute} 
+                                  key={index} 
+                                  style={{ backgroundColor: `${item.value}`, height: '20px', width: '40px' }}>
+                                  </button>
                               )
                             } else {
                               return (
-                                <button id={item.value} onClick={selectAttribute} key={index}>{item.value}</button>
+                                <button
+                                  name={attr.name}
+                                  value={item.value}
+                                  id={item.value}
+                                  onClick={selectAttribute}
+                                  key={index}
+                                >
+                                    {item.value}
+                                </button>
                               )
                             }
                           })}
@@ -107,10 +126,11 @@ class ProductDetails extends Component {
   }
 }
 
-const mapDispatchToProps = (disptach) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (item) => disptach(addItemToCart(item)),
-    addSelectedAttributes: (item) => disptach(addSelectedAttributes(item)),
+    addToCart: (item) => dispatch(addItemToCart(item)),
+    addAttributes: (item) => dispatch(addSelectedAttributes(item)),
+    clearAttributes: () => dispatch(clearSelectedAttributes()),
   }
 }
 

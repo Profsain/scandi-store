@@ -14,7 +14,7 @@ const cartSlice = createSlice({
       if (itemInCart) {
         itemInCart.quantity++;
       } else {
-        state.cartStore.push({...action.payload, quantity: 1});
+        state.cartStore.push({...action.payload, quantity: 1,});
       }
     },
 
@@ -42,12 +42,17 @@ const cartSlice = createSlice({
     },
 
     addSelectedAttributes: (state, action) => {
-      const itemInCart = state.selectedAttributes.find((item) => item.id === action.payload.id);
-      if (itemInCart) {
-        itemInCart.attributes = action.payload.attributes;
+
+      const attributeSelected = state.selectedAttributes.find((item) => item.name === action.payload.name);
+      if (attributeSelected) {
+        attributeSelected.value = action.payload.value;
       } else {
         state.selectedAttributes.push(action.payload);
       }
+    },
+
+    clearSelectedAttributes: (state) => {
+      state.selectedAttributes = [];
     },
   }
 });
@@ -60,4 +65,5 @@ export const {
   decrementQuantity,
   changeCurrency,
   addSelectedAttributes,
+  clearSelectedAttributes
 } = cartSlice.actions; 
