@@ -21,23 +21,19 @@ To get a local copy up and running follow these simple example steps.
 
 ### Run GraphQL Backend Server
 - Clone the GraphQL endpoint server
-- git clone 
+- git clone https://github.com/scandiweb/junior-react-endpoint
 - cd into cloned folder
 - yarn build
 - yarn start
 
 ### To Run Frontend React App
-- Go to the repository page. 
-- Press the "Code" button and copy the link https://github.com/Profsain/scandi-store.git. 
-- Clone it using git command git clone.
+- git clone https://github.com/Profsain/scandi-store.git
 - cd into the cloned folder 
-- Run npm install to install all dependancies 
-- Open folder in your code editor 
-- Run npm start to open the project in localhost
-
-## Authors
+- Run npm install
+- Open folder
+- Run npm start
+## Author
 👤 **Husseini Mudi**
-
 - GitHub: [@githubhandle](https://github.com/Profsain)
 - Twitter: [@twitterhandle](https://twitter.com/profsain)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/profsain)
@@ -46,15 +42,10 @@ To get a local copy up and running follow these simple example steps.
 🤝 Contributing
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the issues page.
+Feel free to check the [issues page](https://github.com/Profsain/scandi-store/issues).
 
 Show your support
 Give a ⭐️ if you like this project!
 
 Acknowledgments
-Hat tip to anyone whose code was used
 Scandiweb [www.scandiweb.com](https://scandiweb.com/)
-
-
-📝 License
-This project is [MIT](./MIT.md) licensed.
