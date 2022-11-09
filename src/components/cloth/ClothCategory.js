@@ -11,6 +11,7 @@ class ClothCategory extends Component {
     const { productsStore, toggleShowProductDetails, setProductId } = this.props;
     const { products, showProductDetails, productId } = productsStore.productsReducer;
     const label = productsStore.cartReducer.currency;
+    
     // open product details page
     const openProductDetails = (id) => {
       toggleShowProductDetails();

@@ -14,12 +14,14 @@ export default class ProductCard extends Component {
         {inStock ? <p className='Product-stock'>In Stock</p> : <p className='Product-stock'>Out of Stock</p>}
         <div>
           <p>{name}</p>
+          
           <div className='Price-cart'>
             <p className='Product-price'>{productCost}</p>
 
             <button className='Product-cart'>
               <BsCart />
             </button>
+
           </div>
         </div>
       </div>

@@ -10,7 +10,6 @@ import { currencyChangesHandler } from '../helper';
 import './Products.css';
 
 class ProductsList extends Component {
-
   render() {
     const { updateProductStore, productsStore, toggleShowProductDetails, setProductId } = this.props;
     const { products, showProductDetails, productId, openCartPage } = productsStore.productsReducer;
@@ -29,7 +28,7 @@ class ProductsList extends Component {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error :(</p>;
 
-            // update redux product store after fetching data
+            // update redux products store after fetching data
             updateProductStore(data);
 
             return (

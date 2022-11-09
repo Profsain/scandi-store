@@ -38,6 +38,7 @@ class TechCategory extends Component {
             }
           </div>
         </div>
+        
         {showProductDetails
           && <ProductDetails
             togglePage={toggleShowProductDetails}

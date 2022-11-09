@@ -15,6 +15,7 @@ class ProductDetails extends Component {
     const { togglePage, productId, addToCart, addAttributes, clearAttributes, productsStore } = this.props;
     const attStore = productsStore.cartReducer.selectedAttributes
     
+    // shortens description text
     const  limitText = (text, limit) => {
       if (text.length > limit) {
         return text.substring(0, limit) + '...';
@@ -22,6 +23,9 @@ class ProductDetails extends Component {
       return text;
     }
     
+    // adds product to cart
+    // toggle product details page
+    // empty selected attributes store
     const handleAddToCart = (item) => {
       addToCart(item);
       togglePage();
@@ -31,11 +35,13 @@ class ProductDetails extends Component {
     const currencyLabel = productsStore.cartReducer.currency;
 
     // handle attributes selection
+    // add attributes type name and value to store
     const selectAttribute = (e) => {
       const selectedAttributes = document.querySelectorAll('.Selected-attribute');
       selectedAttributes.forEach((attribute) => {
         attribute.classList.remove('Selected-attribute');
       });
+
       const { name, value } = e.target;
       addAttributes({ name, value });
       e.target.classList.add('Selected-attribute');
@@ -48,25 +54,26 @@ class ProductDetails extends Component {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error :(</p>;
 
-          // new cart product
+          // new cart item
           const item = {
             id: productId,
             name: data.product.name,
             images: data.product.gallery,
             price: data.product.prices,
             attribute: attStore,	
-            // selectedAttrValue: attStore,
           }
 
           return (
             <div className={`Container`}>
               <NavBar />
+
               <div className='Grid-container'>
                 <div className='Gallery'>
                   {data.product.gallery.map((img, index) => (
                     <img key={index} src={img} alt={data.product.name} />
                   ))}
                 </div>
+
                 <div className='Img-view'>
                   <img src={data.product.gallery[0]} alt={data.product.name} />
                 </div>
@@ -77,7 +84,6 @@ class ProductDetails extends Component {
 
                   <div className='Attributes'>
                     {data.product.attributes.map((attr, index) => (
-                   
                       <div key={index}>
                         <h4>{attr.name}:</h4>
                         <div>

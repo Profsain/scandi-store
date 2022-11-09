@@ -23,12 +23,12 @@ class CartPage extends Component {
           ))}
 
           <div>
-            {/* <p>Total ${getTotalAmount(cartItems)}</p> */}
             <div className='Action-btn'>
               <button className='View-bag'><Link to='/bag'>View Bag</Link></button>
               <button className='Add-to-cart'>Checkout</button>
             </div>
           </div>
+          
         </div>
       </div>
     )
