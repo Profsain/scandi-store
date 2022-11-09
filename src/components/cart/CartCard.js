@@ -17,7 +17,7 @@ class CartCard extends Component {
   render() {
     const { id, name, price, attribute, quantity, images } = this.props.item;
     const { incrementQuantity, decrementQuantity, removeItem,  cart } = this.props;
-   
+    
     // change item images
     const handleNextImg = () => {
       if (this.state.imgIndex < images.length - 1) {
@@ -40,27 +40,26 @@ class CartCard extends Component {
          
           <p className='Product-price'>{currencyChangesHandler(price, currencyLabel)}</p>
           <div className='Attributes'>
-            {attribute.map((attr, index) => (
-              <div key={index}>
-                <h4>{attr.name}:</h4>
-                <div>
-                  {attr.items.map((item, index) => {
-                    if (attr.name === 'Color') {
-                      return (
-                        <button key={index} style={{ backgroundColor: `${item.value}`, height: '20px', width: '40px'}}></button>
-                      )
-                    } else {
-                      return (
-                        <button key={index}>{item.value}</button>
-                      )
-                    }
-                  }
-                    
-                  )}
-                </div>
-              </div>
-            ))}
+            {attribute.map((attr, index) => {
+              if (attr.name === 'Color') {
+                return (
+                  <div key={index}>
+                    <p className='Attribute-name'>{attr.name}</p>
+                    <button key={index} style={{ backgroundColor: `${attr.value}`, height: '20px', width: '40px'}}></button>
+                  </div>
+                )
+              } else {
+                return (
+                  <div key={index}>
+                    <p className='Attribute-name'>{attr.name}</p>
+                    <button key={index}>{attr.value}</button>
+                  </div>
+                )
+              }
+            }
+            )}
           </div>
+
           <button
               className='Close'
               onClick={() => removeItem(id)}

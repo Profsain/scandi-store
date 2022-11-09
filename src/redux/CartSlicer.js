@@ -4,6 +4,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     cartStore: [],
+    selectedAttributes: [],
     currency: 'USD',
   },
 
@@ -13,7 +14,7 @@ const cartSlice = createSlice({
       if (itemInCart) {
         itemInCart.quantity++;
       } else {
-        state.cartStore.push({...action.payload, quantity: 1});
+        state.cartStore.push({...action.payload, quantity: 1,});
       }
     },
 
@@ -39,6 +40,20 @@ const cartSlice = createSlice({
     changeCurrency: (state, action) => {
       state.currency = action.payload
     },
+
+    addSelectedAttributes: (state, action) => {
+
+      const attributeSelected = state.selectedAttributes.find((item) => item.name === action.payload.name);
+      if (attributeSelected) {
+        attributeSelected.value = action.payload.value;
+      } else {
+        state.selectedAttributes.push(action.payload);
+      }
+    },
+
+    clearSelectedAttributes: (state) => {
+      state.selectedAttributes = [];
+    },
   }
 });
 
@@ -48,5 +63,7 @@ export const {
   removeItemFromCart,
   incrementQuantity,
   decrementQuantity,
-  changeCurrency
+  changeCurrency,
+  addSelectedAttributes,
+  clearSelectedAttributes
 } = cartSlice.actions; 

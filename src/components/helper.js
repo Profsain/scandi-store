@@ -2,7 +2,6 @@
 const getTotalAmount = (cartItems, currencyLabel) => {
   let total = 0;
   let symbol = '';
-  console.log('the cart item are', cartItems)
 
   cartItems.map((item) => {
     const { price, quantity } = item;
@@ -48,6 +47,11 @@ const currencyChangesHandler = (pricesData, label) => {
     return null;
   });
   return symbol + amount
-} 
+}
 
-export  {getTotalAmount, getTax, getItemQuantity, currencyChangesHandler}
+export  {
+  getTotalAmount, 
+  getTax, 
+  getItemQuantity,
+  currencyChangesHandler, 
+}

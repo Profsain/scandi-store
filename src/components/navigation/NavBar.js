@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeCurrency } from '../../redux/CartSlicer';
+import { toggleOpenCartPage } from '../../redux/ProductsSlice';
 import { FaGift, FaShoppingCart } from 'react-icons/fa';
 import './NavBar.css';
 
 
 class NavBar extends Component {
   render() {
-    const { reduxStore, changeCurrencyValue } = this.props;
+    const { reduxStore, changeCurrencyValue, toggleCartPage } = this.props;
     const cartTotalQuantity = reduxStore.cartReducer.cartStore.length;
     
     // Handle currency change
@@ -20,8 +21,8 @@ class NavBar extends Component {
       <div className='Navbar'>
         <nav>
         <NavLink to='/'>Store</NavLink>
-        <NavLink to='/men'>Men</NavLink>
-        <NavLink to='/women'>Women</NavLink>
+        <NavLink to='/cloth'>Cloth</NavLink>
+        <NavLink to='/tech'>Tech</NavLink>
         </nav>
         <div className='Brand'>
           <FaGift />
@@ -37,7 +38,7 @@ class NavBar extends Component {
               <option value='RUB'>₽</option>
             </select>
           </div>
-          <NavLink to='/cart'><FaShoppingCart />{cartTotalQuantity}</NavLink>
+          <button className='Cart-btn' onClick={toggleCartPage}><FaShoppingCart />{cartTotalQuantity}</button>
         </div>
       </div>
     )
@@ -49,7 +50,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeCurrencyValue: (currency) => dispatch(changeCurrency(currency))
+  changeCurrencyValue: (currency) => dispatch(changeCurrency(currency)),
+  toggleCartPage: () => dispatch(toggleOpenCartPage()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
