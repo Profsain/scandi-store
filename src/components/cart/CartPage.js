@@ -9,23 +9,25 @@ class CartPage extends Component {
 
   render() {
     const cartItems = this.props.reduxStore.cartReducer.cartStore;
-    
-    return (
-      <div>
-        {cartItems.map((item, index) => (
-          <div key={index}>
-            <CartCard
-              item={item}
-              key={index}
-            />
-          </div>
-        ))}
 
-        <div>
-          {/* <p>Total ${getTotalAmount(cartItems)}</p> */}
+    return (
+      <div className='Cart-model'>
+        <div className='CartPage-container'>
+          {cartItems.map((item, index) => (
+            <div key={index}>
+              <CartCard
+                item={item}
+                key={index}
+              />
+            </div>
+          ))}
+
           <div>
-            <button className='View-bag'><Link to='/bag'>View Bag</Link></button>
-            <button className='Add-to-cart'>Checkout</button>
+            {/* <p>Total ${getTotalAmount(cartItems)}</p> */}
+            <div className='Action-btn'>
+              <button className='View-bag'><Link to='/bag'>View Bag</Link></button>
+              <button className='Add-to-cart'>Checkout</button>
+            </div>
           </div>
         </div>
       </div>

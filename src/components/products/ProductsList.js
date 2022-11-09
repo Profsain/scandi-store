@@ -5,6 +5,7 @@ import { Query } from "@apollo/client/react/components";
 import { LOAD_DATA } from '../../graphQL/Queries';
 import ProductCard from './ProductCard';
 import ProductDetails from '../productDetails/ProductDetails';
+import CartPage from '../cart/CartPage';
 import { currencyChangesHandler } from '../helper';
 import './Products.css';
 
@@ -12,7 +13,7 @@ class ProductsList extends Component {
 
   render() {
     const { updateProductStore, productsStore, toggleShowProductDetails, setProductId } = this.props;
-    const { products, showProductDetails, productId } = productsStore.productsReducer;
+    const { products, showProductDetails, productId, openCartPage } = productsStore.productsReducer;
     const label = productsStore.cartReducer.currency;
 
     // open product details page
@@ -56,6 +57,10 @@ class ProductsList extends Component {
             productId={productId}
           />
         }
+        {
+          openCartPage && <CartPage />
+        }
+          
       </>
     )
   }
