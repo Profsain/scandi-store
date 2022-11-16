@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import ProductsList from './components/products/ProductsList';
+import Home from './components/home/Home';
 import ClothCategory from './components/cloth/ClothCategory';
 import TechCategory from './components/tech/TechCategory';
 import NavBar from './components/navigation/NavBar';
@@ -15,7 +15,7 @@ class App extends Component {
       <div className='App'>
         <NavBar />
         <Routes>
-          <Route path='/' element={<ProductsList />} />
+          <Route path='/' element={<Home />} />
           <Route path='/cloth' element={<ClothCategory />} />
           <Route path='/tech' element={<TechCategory />} />
           <Route path='/product/:id' element={<ProductDetails />} />

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { updateProducts } from '../../redux/ProductsSlice';
 import { Query } from "@apollo/client/react/components";
 import { LOAD_DATA } from '../../graphQL/Queries';
+import ProductsList from '../products/ProductsList';
 
 class Home extends Component {
   render() {
+    const { updateProductStore } = this.props;
     return (
       <>
         <Query query={LOAD_DATA}>
@@ -16,8 +19,7 @@ class Home extends Component {
             updateProductStore(data);
 
             return (
-              <div className='Products-grid'>
-              </div>
+              <ProductsList catIndex={0}/>
             )
           }
           }
@@ -27,8 +29,12 @@ class Home extends Component {
   }
 }
 
-const mapDispatchToProps = (state) => ({
+const mapStateToProps = (state) => ({
+  productsStore: state,
+});
+
+const mapDispatchToProps = (dispatch) => ({
   updateProductStore: (data) => dispatch(updateProducts(data)),
 })
 
-export default connect(mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
