@@ -22,7 +22,7 @@ To get a local copy up and running follow these simple example steps.
 ### Run GraphQL Backend Server
 - Clone the GraphQL endpoint server
 - git clone https://github.com/scandiweb/junior-react-endpoint
-- cd into cloned folder
+- cd into cloned directory
 - yarn build
 - yarn start
 
