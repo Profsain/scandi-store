@@ -9,7 +9,7 @@ import './NavBar.css';
 
 class NavBar extends Component {
   render() {
-    const { reduxStore, changeCurrencyValue, toggleCartPage } = this.props;
+    const {togglePage, reduxStore, changeCurrencyValue, toggleCartPage } = this.props;
     const cartTotalQuantity = reduxStore.cartReducer.cartStore.length;
     
     // Handle currency change

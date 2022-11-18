@@ -65,7 +65,6 @@ class ProductDetails extends Component {
 
           return (
             <div className={`Container`}>
-              <NavBar />
 
               <div className='Grid-container'>
                 <div className='Gallery'>
