@@ -49,9 +49,19 @@ const currencyChangesHandler = (pricesData, label) => {
   return symbol + amount
 }
 
+// Show tooltip
+const showTooltip = () => {
+  const tooltip = document.querySelector('.Tooltip');
+  tooltip.classList.add('Tooltip-show');
+  setTimeout(() => {
+    tooltip.classList.remove('Tooltip-show');
+  }, 2000);
+}
+
 export  {
   getTotalAmount, 
   getTax, 
   getItemQuantity,
-  currencyChangesHandler, 
+  currencyChangesHandler,
+  showTooltip,
 }

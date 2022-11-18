@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CartCard from '../cart/CartCard';
-import { getTotalAmount, getTax, getItemQuantity } from '../helper';
+import { getTotalAmount, getTax, getItemQuantity, showTooltip } from '../helper';
 import '../../App.css';
 import './ShoppingBag.css';
 class ShoppingBag extends Component {
@@ -22,7 +22,8 @@ class ShoppingBag extends Component {
           <p>Tax21%: <span>{getTax(21, cartStore, currency)}</span></p>
           <p>Quantity: <span>{getItemQuantity(cartStore)}</span></p>
           <p>Total: <span>{getTotalAmount(cartStore, currency)}</span></p>
-          <button className='Add-to-cart'>Order</button>
+          <button className='Add-to-cart' onMouseEnter={showTooltip}>Order</button>
+          <p className='Tooltip'>Order feature not implemented yet</p>
         </div>
       </div>
     )

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleOpenCartPage } from '../../redux/ProductsSlice';
+import { showTooltip } from '../helper';
 import CartCard from './CartCard';
 import './Cart.css';
 import '../../App.css';
@@ -12,24 +13,16 @@ class CartPage extends Component {
     const cartItems = this.props.reduxStore.cartReducer.cartStore;
     const { toggleCartPage } = this.props;
 
-    const cartModelCloseHandler = () => {
+    const closeCartModelHandler = () => {
        toggleCartPage();
     }
 
     const preventEventPropagation = (e) => {
       e.stopPropagation();
     }
-
-    const showTooltip = () => {
-      const tooltip = document.querySelector('.Tooltip');
-      tooltip.classList.add('Tooltip-show');
-      setTimeout(() => {
-        tooltip.classList.remove('Tooltip-show');
-      }, 2000);
-    }
     
     return (
-      <div className='Cart-model' onClick={cartModelCloseHandler}>
+      <div className='Cart-model' onClick={closeCartModelHandler}>
         <div 
           className='CartPage-container' 
           onClick={(e) => preventEventPropagation(e)}
@@ -45,10 +38,12 @@ class CartPage extends Component {
 
           <div>
             <div className='Action-btn'>
-              <button className='View-bag'><Link to='/bag'>View Bag</Link></button>
-              <button className='Add-to-cart' onClick={showTooltip} onMouseEnter={showTooltip}>Checkout</button>
+              <button className='View-bag' onClick={closeCartModelHandler}>
+                <Link to='/bag'>View Bag</Link>
+              </button>
+              <button className='Add-to-cart' onMouseEnter={showTooltip}>Checkout</button>
               <div>
-                <p className='Tooltip'>Not implemented yet</p>
+                <p className='Tooltip'>Check feature not implemented yet</p>
               </div>
             </div>
           </div>

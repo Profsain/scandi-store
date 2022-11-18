@@ -63,9 +63,10 @@
 .Tooltip {
   visibility: hidden;	
   padding: 8px 28px;
-  font-weight: 800;
-  color: #5ece7b;
-  background-color: lightgray;
+  width: 400px;
+  font-weight: 600;
+  color: #fff;
+  background-color: gray;
 }
 
 .Tooltip-show {
