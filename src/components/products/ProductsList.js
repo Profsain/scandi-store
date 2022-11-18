@@ -13,7 +13,6 @@ class ProductsList extends Component {
     const { catIndex, productsStore, toggleShowProductDetails, setProductId } = this.props;
     const { products, showProductDetails, productId, openCartPage } = productsStore.productsReducer;
     const label = productsStore.cartReducer.currency;
-    console.log('Product list props', this.props)
     // open product details page
     const openProductDetails = (id) => {
       toggleShowProductDetails();

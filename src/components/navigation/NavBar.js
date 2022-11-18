@@ -25,7 +25,7 @@ class NavBar extends Component {
         <NavLink to='/tech'>Tech</NavLink>
         </nav>
         <div className='Brand'>
-          <FaGift />
+          <NavLink to='/'><FaGift /></NavLink>
         </div>
 
         <div className='Cart'>

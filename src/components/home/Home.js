@@ -13,9 +13,9 @@ class Home extends Component {
         <Query query={LOAD_DATA}>
           {({ loading, error, data }) => {
             if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error :(</p>;
+            if (error) return <p>Error :( </p>;
 
-            // update redux products store after fetching data
+            // update products store after fetching data
             updateProductStore(data);
 
             return (

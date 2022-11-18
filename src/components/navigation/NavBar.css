@@ -27,11 +27,11 @@ nav a.active, .Cart-btn {
   padding: 5px;
 }
 
-.Brand {
-  font-size: 1rem;
+.Brand a {
+  font-size: 1rem !important;
   font-weight: 900;
-  color: #5ece7b;
-  background-color: #fff;
+  color: #5ece7b !important;
+  background-color: #fff !important;
   padding: 5px;
   border: none;
   border-radius: 8px;
@@ -42,6 +42,12 @@ nav a.active, .Cart-btn {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.Symbol:hover, 
+.Cart-btn:hover {
+  cursor: pointer;
+  background-color: aquamarine;
 }
 
 .Symbol {
