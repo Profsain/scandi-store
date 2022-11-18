@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toggleOpenCartPage } from '../../redux/ProductsSlice';
 import CartCard from './CartCard';
 import './Cart.css';
 import '../../App.css';
@@ -9,10 +10,21 @@ class CartPage extends Component {
 
   render() {
     const cartItems = this.props.reduxStore.cartReducer.cartStore;
+    const { toggleCartPage } = this.props;
 
+    const cartModelCloseHandler = () => {
+       toggleCartPage();
+    }
+
+    const preventEventPropagation = (e) => {
+      e.stopPropagation();
+    }
     return (
-      <div className='Cart-model'>
-        <div className='CartPage-container'>
+      <div className='Cart-model' onClick={cartModelCloseHandler}>
+        <div 
+          className='CartPage-container' 
+          onClick={(e) => preventEventPropagation(e)}
+        >
           {cartItems.map((item, index) => (
             <div key={index}>
               <CartCard
@@ -39,4 +51,8 @@ const mapStateToProps = (state) => ({
   reduxStore: state,
 });
 
-export default connect(mapStateToProps)(CartPage);
+const mapDispatchToProps = (dispatch) => ({
+  toggleCartPage: () => dispatch(toggleOpenCartPage()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartPage);
