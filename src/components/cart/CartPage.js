@@ -19,6 +19,15 @@ class CartPage extends Component {
     const preventEventPropagation = (e) => {
       e.stopPropagation();
     }
+
+    const showTooltip = () => {
+      const tooltip = document.querySelector('.Tooltip');
+      tooltip.classList.add('Tooltip-show');
+      setTimeout(() => {
+        tooltip.classList.remove('Tooltip-show');
+      }, 2000);
+    }
+    
     return (
       <div className='Cart-model' onClick={cartModelCloseHandler}>
         <div 
@@ -37,7 +46,10 @@ class CartPage extends Component {
           <div>
             <div className='Action-btn'>
               <button className='View-bag'><Link to='/bag'>View Bag</Link></button>
-              <button className='Add-to-cart'>Checkout</button>
+              <button className='Add-to-cart' onClick={showTooltip} onMouseEnter={showTooltip}>Checkout</button>
+              <div>
+                <p className='Tooltip'>Not implemented yet</p>
+              </div>
             </div>
           </div>
           
